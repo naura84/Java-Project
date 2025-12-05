@@ -1,10 +1,12 @@
 package models;
 
 import java.time.LocalDate;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.NoArgsConstructor;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 public class UserProfile {
     private Integer userId;

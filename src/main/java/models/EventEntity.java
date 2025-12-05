@@ -1,7 +1,13 @@
 package models;
 
 import java.time.LocalDateTime;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
 
+@Getter
+@Setter
+@NoArgsConstructor
 public class EventEntity {
     private Integer id;
     private String title;
@@ -12,41 +18,4 @@ public class EventEntity {
     private String audience; // JSON
     private Integer createdBy;
     private LocalDateTime createdAt;
-
-    public EventEntity() {}
-    public Integer getId() { return id; }
-
-    public void setId(Integer id) { this.id = id; }
-
-    public String getTitle() { return title; }
-
-    public void setTitle(String title) { this.title = title; }
-
-    public String getDescription() { return description; }
-
-    public void setDescription(String description) { this.description = description; }
-
-    public LocalDateTime getStartDatetime() { return startDatetime; }
-
-    public void setStartDatetime(LocalDateTime startDatetime) { this.startDatetime = startDatetime; }
-
-    public LocalDateTime getEndDatetime() { return endDatetime; }
-
-    public void setEndDatetime(LocalDateTime endDatetime) { this.endDatetime = endDatetime; }
-
-    public String getLocation() { return location; }
-
-    public void setLocation(String location) { this.location = location; }
-
-    public String getAudience() { return audience; }
-
-    public void setAudience(String audience) { this.audience = audience; }
-
-    public Integer getCreatedBy() { return createdBy; }
-
-    public void setCreatedBy(Integer createdBy) { this.createdBy = createdBy; }
-
-    public LocalDateTime getCreatedAt() { return createdAt; }
-
-    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
 }
