@@ -479,7 +479,7 @@ CREATE TABLE notifications (
     title VARCHAR(255),
     message TEXT,
     link VARCHAR(500),
-    read BOOLEAN DEFAULT FALSE,
+    is_read TINYINT(1) DEFAULT 0, -- renommé pour éviter le mot réservé
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 ) ENGINE=InnoDB;
@@ -586,3 +586,23 @@ INSERT IGNORE INTO courses (id, code, title, credits, department_id) VALUES (1,'
 INSERT IGNORE INTO course_offerings (id, course_id, term_id, instructor_id, class_id, max_capacity, status) VALUES (1,1,1,2, NULL, 100, 'SCHEDULED');
 
 -- Fin du script
+
+-- Option A (préférée si vous souhaitez conserver les données existantes) :
+-- Renomme la colonne `read` en `is_read`. Si la colonne n'existe pas, la commande échouera mais ne touchera pas les données.
+ALTER TABLE notifications CHANGE `read` `is_read` TINYINT(1) NOT NULL DEFAULT 0;
+
+-- Si votre MySQL supporte ADD COLUMN IF NOT EXISTS (8.0+), ajoutez la colonne si elle est absente :
+ALTER TABLE notifications ADD COLUMN IF NOT EXISTS is_read TINYINT(1) NOT NULL DEFAULT 0;
+
+-- Option B (si vous pouvez supprimer et recréer la table) :
+DROP TABLE IF EXISTS notifications;
+CREATE TABLE notifications (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT,
+    title VARCHAR(255),
+    message TEXT,
+    link VARCHAR(500),
+    is_read TINYINT(1) DEFAULT 0, -- renommé pour éviter le mot réservé
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+) ENGINE=InnoDB;
