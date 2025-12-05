@@ -257,7 +257,7 @@ CREATE TABLE assessment_types (
 CREATE TABLE assessments (
     id INT PRIMARY KEY AUTO_INCREMENT,
     course_offering_id INT NOT NULL,
-    type_id INT NOT NULL,
+    type_id INT NULL,            -- rendu NULLABLE pour permettre ON DELETE SET NULL
     title VARCHAR(200),
     description TEXT,
     weight DECIMAL(5,2) DEFAULT 0, -- percentage of final grade
