@@ -2,19 +2,29 @@ package models;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
 
+@Entity
 @Getter
 @Setter
 @NoArgsConstructor
 public class Grade {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Integer assessmentId;
-    private Integer studentId;
+    @ManyToOne
+    @JoinColumn(name = "assessment_id")
+    private Assessment assessment;
+    @ManyToOne
+    @JoinColumn(name = "student_id")
+    private Etudiant student;
     private BigDecimal score;
     private String remarks;
-    private Integer gradedBy;
+    @ManyToOne
+    @JoinColumn(name = "graded_by")
+    private User gradedBy;
     private LocalDateTime gradedAt;
 }

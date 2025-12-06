@@ -1,14 +1,18 @@
 package models;
 
 import java.time.LocalDateTime;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
 
+@Entity
 @Getter
 @Setter
 @NoArgsConstructor
 public class FileEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String ownerType;
     private Integer ownerId;
@@ -16,6 +20,8 @@ public class FileEntity {
     private String filepath;
     private String mimeType;
     private Long sizeBytes;
-    private Integer uploadedBy;
+    @ManyToOne
+    @JoinColumn(name = "uploaded_by")
+    private User uploadedBy;
     private LocalDateTime uploadedAt;
 }

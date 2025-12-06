@@ -1,16 +1,27 @@
 package models;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
 
+@Entity
 @Getter
 @Setter
 @NoArgsConstructor
 public class Department {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Integer facultyId;
+    @ManyToOne
+    @JoinColumn(name = "faculty_id")
+    private Faculty faculty;
     private String code;
     private String name;
-    private Integer headId;
+    @ManyToOne
+    @JoinColumn(name = "head_id")
+    private Enseignant head;
+
+    @OneToMany(mappedBy = "department")
+    private java.util.List<Program> programs;
 }
