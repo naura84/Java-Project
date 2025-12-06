@@ -33,6 +33,7 @@ models\HealthRecord.class
 models\Role.class
 models\EventEntity.class
 models\TransportBus.class
+config\EnvLoader.class
 models\Program.class
 models\StaffNonTeaching.class
 models\Building.class

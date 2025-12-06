@@ -81,3 +81,21 @@ Bonnes pratiques & remarques
 - Protéger les mots de passe : stocker uniquement des hashes sécurisés (bcrypt/argon2).
 - Prévoir des sauvegardes régulières et valider les contraintes étrangères après import.
 - Indexer les colonnes fréquemment recherchées (email, role_id, student_number, course codes).
+
+Usage rapide
+-----------
+- Préparer un fichier `.env` à la racine (voir `.env` template) et remplir `DB_URL`, `DB_USER`, `DB_PASSWORD`.
+- Charger les variables avant d'initialiser JPA : appelez `config.EnvLoader.load()` très tôt dans votre application.
+- Compiler le projet :
+
+```powershell
+mvn -DskipTests package
+```
+
+- Pour exécuter (selon votre setup), utilisez Maven exec ou générez un JAR exécutable avec un plugin d'assemblage.
+
+- Les fichiers compilés et ressources sont dans `target/classes`. Ne modifiez pas directement ce dossier.
+
+Contribuer
+---------
+- Merci de ne pas committer vos identifiants dans `.env`. Le fichier `.env` est ignoré par Git.
