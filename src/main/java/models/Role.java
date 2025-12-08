@@ -14,7 +14,8 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String code;
+    @Enumerated(EnumType.STRING)
+    private RoleType code;
     private String label;
     private String description;
 

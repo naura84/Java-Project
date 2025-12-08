@@ -536,12 +536,10 @@ CREATE TABLE system_settings (
 -- Index et contraintes supplémentaires
 ALTER TABLE users ADD INDEX idx_users_email (email);
 
--- Données d'exemple minimales
-INSERT IGNORE INTO roles (id, code, label) VALUES
-(1,'ADMIN','Administrateur'),
-(2,'ENSEIGNANT','Enseignant'),
-(3,'ETUDIANT','Etudiant'),
-(4,'STAFF','Personnel');
+ INSERT IGNORE INTO roles (code, label, description) VALUES
+('admin','Administrateur','Compte administrateur'),
+('student','Étudiant','Compte étudiant'),
+('teacher','Enseignant','Compte enseignant');
 
 INSERT IGNORE INTO genders (id, code, label) VALUES
 (1,'M','Masculin'),
@@ -587,22 +585,39 @@ INSERT IGNORE INTO course_offerings (id, course_id, term_id, instructor_id, clas
 
 -- Fin du script
 
--- Option A (préférée si vous souhaitez conserver les données existantes) :
--- Renomme la colonne `read` en `is_read`. Si la colonne n'existe pas, la commande échouera mais ne touchera pas les données.
-ALTER TABLE notifications CHANGE `read` `is_read` TINYINT(1) NOT NULL DEFAULT 0;
+/*
+ MySQL / phpMyAdmin helper: convert `roles.code` to an ENUM('admin','student','teacher').
+ Run these commands in your phpMyAdmin SQL console. They are careful: backup, normalize existing codes,
+ then ALTER the column to an ENUM and ensure canonical role rows exist.
 
--- Si votre MySQL supporte ADD COLUMN IF NOT EXISTS (8.0+), ajoutez la colonne si elle est absente :
-ALTER TABLE notifications ADD COLUMN IF NOT EXISTS is_read TINYINT(1) NOT NULL DEFAULT 0;
+ -- 1) Backup existing roles table
+ CREATE TABLE IF NOT EXISTS roles_backup AS SELECT * FROM roles;
 
--- Option B (si vous pouvez supprimer et recréer la table) :
-DROP TABLE IF EXISTS notifications;
-CREATE TABLE notifications (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    user_id INT,
-    title VARCHAR(255),
-    message TEXT,
-    link VARCHAR(500),
-    is_read TINYINT(1) DEFAULT 0, -- renommé pour éviter le mot réservé
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-) ENGINE=InnoDB;
+ -- 2) Normalize existing textual role codes to the expected lowercase values
+ UPDATE roles SET code =
+     CASE
+         WHEN UPPER(code) IN ('ADMIN','ROLE_ADMIN','ROLE-ADMIN') THEN 'admin'
+         WHEN UPPER(code) IN ('ETUDIANT','STUDENT','ELEVE') THEN 'student'
+         WHEN UPPER(code) IN ('ENSEIGNANT','TEACHER','PROF') THEN 'teacher'
+         ELSE LOWER(code)
+     END;
+
+ -- 3) Review rows before applying the ENUM change (optional):
+ -- SELECT id, code, label FROM roles;
+
+ -- 4) Now alter the column type to ENUM (this enforces allowed values at DB level).
+ ALTER TABLE roles MODIFY code ENUM('admin','student','teacher') NOT NULL DEFAULT 'admin';
+
+ -- 5) Ensure canonical roles are present (inserts if absent)
+ INSERT INTO roles (code, label, description) VALUES
+     ('admin','Administrateur','Compte administrateur'),
+     ('student','Étudiant','Compte étudiant'),
+     ('teacher','Enseignant','Compte enseignant')
+ ON DUPLICATE KEY UPDATE label=VALUES(label), description=VALUES(description);
+
+ -- Notes:
+ -- - If your `roles` table uses a different column name for the role code, adjust the SQL accordingly.
+ -- - The ALTER TABLE will fail if some existing values in `code` are not covered by the ENUM; use the UPDATE normalization step above
+ --   to map unknown values to one of the three allowed codes before altering.
+ -- - Backup the database before running schema-altering commands.
+*/

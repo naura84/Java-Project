@@ -29,4 +29,6 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<UserProfile> profiles;
+    @jakarta.persistence.Transient
+    private String sessionId;
 }

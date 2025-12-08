@@ -26,6 +26,10 @@ public class AuthService {
             sessions.put(sessionId, u.getId());
             // attach session id on user temporarily (not persisted) — caller may want it
             u.setPassword(null); // avoid returning password
+            u.setSessionId(sessionId);
+            // store current session in application session holder
+            AppSession.get().setCurrentUser(u);
+            AppSession.get().setSessionId(sessionId);
             return u;
         }
         return null;

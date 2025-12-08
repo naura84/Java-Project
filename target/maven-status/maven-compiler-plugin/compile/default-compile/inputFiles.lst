@@ -39,10 +39,12 @@ C:\Users\Lenovo\Java-Project\src\main\java\models\Assessment.java
 C:\Users\Lenovo\Java-Project\src\main\java\models\Gender.java
 C:\Users\Lenovo\Java-Project\src\main\java\models\SchoolClass.java
 C:\Users\Lenovo\Java-Project\src\main\java\models\FeeItem.java
+C:\Users\Lenovo\Java-Project\src\main\java\services\AppSession.java
 C:\Users\Lenovo\Java-Project\src\main\java\models\Timetable.java
 C:\Users\Lenovo\Java-Project\src\main\java\com\controllers\DashboardEleveController.java
 C:\Users\Lenovo\Java-Project\src\main\java\models\Program.java
 C:\Users\Lenovo\Java-Project\src\main\java\services\CourseService.java
+C:\Users\Lenovo\Java-Project\src\main\java\models\RoleType.java
 C:\Users\Lenovo\Java-Project\src\main\java\services\AuthService.java
 C:\Users\Lenovo\Java-Project\src\main\java\models\CourseOffering.java
 C:\Users\Lenovo\Java-Project\src\main\java\services\NotificationService.java
