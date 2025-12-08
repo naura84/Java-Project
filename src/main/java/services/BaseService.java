@@ -2,10 +2,7 @@ package services;
 
 import dao.GenericDAO;
 
-/**
- * Simple base service that delegates basic operations to `GenericDAO`.
- * Services in the application can extend this class to avoid per-entity DAO boilerplate.
- */
+
 public class BaseService<T, ID> {
 
     protected final GenericDAO<T, ID> dao;

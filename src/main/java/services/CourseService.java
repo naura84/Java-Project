@@ -2,20 +2,52 @@ package services;
 
 import dao.GenericDAO;
 import models.Course;
+import models.CourseOffering;
+import models.Enseignant;
 
-/**
- * Example service for `Course` demonstrating how to use `GenericDAO`.
- * If you prefer DI, create and inject `GenericDAO<Course, Integer>` instead of `new`ing it.
- */
+import java.util.List;
+
 public class CourseService extends BaseService<Course, Integer> {
 
-    public CourseService() {
-        super(new GenericDAO<>(Course.class));
+    private final GenericDAO<CourseOffering, Integer> offeringDao = new GenericDAO<>(CourseOffering.class);
+    private final GenericDAO<Enseignant, Integer> teacherDao = new GenericDAO<>(Enseignant.class);
+
+    public CourseService(GenericDAO<Course, Integer> dao) {
+        super(dao);
     }
 
-    // Add course-specific business methods here. Examples:
-    public java.util.List<Course> findByDepartmentId(Integer deptId) {
-        String jpql = "SELECT c FROM Course c WHERE c.department.id = :deptId";
-        return dao.findWithQuery(jpql, java.util.Map.of("deptId", deptId));
+    public Course createCourse(Course c) {
+        return save(c);
+    }
+
+    public CourseOffering createClass(Integer courseId, String className) {
+        Course c = find(courseId);
+        if (c == null) throw new IllegalArgumentException("Course not found: " + courseId);
+        CourseOffering co = new CourseOffering();
+        co.setCourse(c);
+        // CourseOffering doesn't have a 'name' field; use schedule/status as placeholder
+        co.setSchedule(className);
+        return offeringDao.save(co);
+    }
+
+    public CourseOffering addTeacherToCourse(Integer courseOfferingId, Integer teacherId) {
+        CourseOffering co = offeringDao.find(courseOfferingId);
+        Enseignant t = teacherDao.find(teacherId);
+        if (co == null || t == null) throw new IllegalArgumentException("Invalid ids");
+        co.setInstructor(t);
+        return offeringDao.update(co);
+    }
+
+    public void setVolumeHours(Integer courseId, Integer hours) {
+        Course c = find(courseId);
+        if (c == null) throw new IllegalArgumentException("Course not found: " + courseId);
+        c.setCoefficient(hours);
+        update(c);
+    }
+
+    public List<CourseOffering> listOfferings(Integer courseId) {
+        String jpql = "SELECT o FROM CourseOffering o WHERE o.course.id = :cid";
+        return offeringDao.findWithQuery(jpql, java.util.Map.of("cid", courseId));
     }
 }
+
