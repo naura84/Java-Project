@@ -19,8 +19,7 @@ CREATE TABLE genders (
 
 CREATE TABLE nationalities (
     id SMALLINT PRIMARY KEY AUTO_INCREMENT,
-    code VARCHAR(10) UNIQUE,
-    name VARCHAR(100)
+    name VARCHAR(150) NOT NULL UNIQUE
 ) ENGINE=InnoDB;
 
 -- Authentification des utilisateurs
@@ -535,55 +534,6 @@ CREATE TABLE system_settings (
 
 -- Index et contraintes supplémentaires
 ALTER TABLE users ADD INDEX idx_users_email (email);
-
- INSERT IGNORE INTO roles (code, label, description) VALUES
-('admin','Administrateur','Compte administrateur'),
-('student','Étudiant','Compte étudiant'),
-('teacher','Enseignant','Compte enseignant');
-
-INSERT IGNORE INTO genders (id, code, label) VALUES
-(1,'M','Masculin'),
-(2,'F','Feminin'),
-(3,'O','Autre');
-
-INSERT IGNORE INTO nationalities (name) VALUES ('Française'),('Marocaine'),('Sénégalaise'),('Autre');
-
-INSERT IGNORE INTO users (id, username, email, password, role_id, active) VALUES
-(1,'admin1','admin@school.com','hashed_pwd_admin',1,TRUE),
-(2,'dupont.p','dupont@school.com','hashed_pwd_dupont',2,TRUE),
-(3,'martin.s','martin@school.com','hashed_pwd_martin',2,TRUE),
-(4,'jean.d','jean@student.com','hashed_pwd_jean',3,TRUE),
-(5,'marie.l','marie@student.com','hashed_pwd_marie',3,TRUE);
-
-INSERT IGNORE INTO user_profiles (user_id, first_name, last_name, gender_id, birth_date, phone_mobile) VALUES
-(1,'Admin','One',1,'1980-01-01','+33123456789'),
-(2,'Pierre','Dupont',1,'1985-05-12','+33123450001'),
-(3,'Sophie','Martin',2,'1990-07-22','+33123450002'),
-(4,'Jean','Dupuis',1,'2005-03-15','+33600123456'),
-(5,'Marie','Leclerc',2,'2005-07-22','+33600123457');
-
-INSERT IGNORE INTO admins (id, title) VALUES (1,'Directeur');
-
-INSERT IGNORE INTO enseignants (id, employee_number, department_id, hire_date, job_title, specialization) VALUES
-(2,'EMP2020-001',NULL,'2020-09-01','Professeur','Mathématiques'),
-(3,'EMP2021-002',NULL,'2021-09-01','Professeur','Français');
-
-INSERT IGNORE INTO etudiants (id, student_number, admission_date, program_id, year_admitted) VALUES
-(4,'ETU001','2021-09-01',NULL,2021),
-(5,'ETU002','2021-09-01',NULL,2021);
-
-INSERT IGNORE INTO academic_years (id, name, start_date, end_date, active) VALUES
-(1,'2024-2025','2024-09-01','2025-06-30',TRUE);
-
-INSERT IGNORE INTO terms (academic_year_id, name, start_date, end_date) VALUES
-(1,'Semestre 1','2024-09-01','2025-01-15'),
-(1,'Semestre 2','2025-01-16','2025-06-30');
-
-INSERT IGNORE INTO departments (id, name) VALUES (1,'Département de Mathématiques');
-INSERT IGNORE INTO courses (id, code, title, credits, department_id) VALUES (1,'MATH101','Algèbre',3.0,1);
-INSERT IGNORE INTO course_offerings (id, course_id, term_id, instructor_id, class_id, max_capacity, status) VALUES (1,1,1,2, NULL, 100, 'SCHEDULED');
-
--- Fin du script
 
 /*
  MySQL / phpMyAdmin helper: convert `roles.code` to an ENUM('admin','student','teacher').

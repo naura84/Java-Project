@@ -7,6 +7,7 @@ import lombok.Setter;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Table(name = "grade_scales")
 @Getter
 @Setter
 @NoArgsConstructor

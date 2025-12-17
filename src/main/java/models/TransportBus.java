@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Table(name = "transport_buses")
 @Getter
 @Setter
 @NoArgsConstructor

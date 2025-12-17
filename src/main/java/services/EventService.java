@@ -18,7 +18,12 @@ public class EventService extends BaseService<EventEntity, Integer> {
     }
 
     public List<EventEntity> listUpcoming() {
-        String jpql = "SELECT ev FROM EventEntity ev WHERE ev.date >= CURRENT_TIMESTAMP";
+        String jpql = "SELECT ev FROM EventEntity ev WHERE ev.startDatetime >= CURRENT_TIMESTAMP ORDER BY ev.startDatetime ASC";
         return dao.findWithQuery(jpql, null);
+    }
+
+    public java.util.List<EventEntity> listUpcoming(int max) {
+        String jpql = "SELECT ev FROM EventEntity ev WHERE ev.startDatetime >= CURRENT_TIMESTAMP ORDER BY ev.startDatetime ASC";
+        return dao.findWithQuery(jpql, null, max);
     }
 }

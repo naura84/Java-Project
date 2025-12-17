@@ -8,6 +8,7 @@ import lombok.Setter;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Table(name = "transcripts")
 @Getter
 @Setter
 @NoArgsConstructor

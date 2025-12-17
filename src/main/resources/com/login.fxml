@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="439.0" prefWidth="680.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
+   <children>
+      <Pane layoutX="263.0" prefHeight="439.0" prefWidth="420.0" style="-fx-background-color: white;">
+         <children>
+            <Pane fx:id="formular_pane" layoutX="85.0" layoutY="143.0" prefHeight="194.0" prefWidth="212.0" style="-fx-background-color: white; -fx-background-radius: 7%;">
+               <children>
+                  <Label layoutX="23.0" layoutY="14.0" text="Email">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="23.0" layoutY="70.0" text="Password">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="emailarea" layoutX="23.0" layoutY="34.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="167.0" style="-fx-background-color: #f4f3f3;" />
+                  <Button fx:id="signin" layoutX="23.0" layoutY="155.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="167.0" style="-fx-background-color: #094a9e;" text="Sign In" textFill="WHITE" />
+                  <Hyperlink layoutX="23.0" layoutY="124.0" text="Forgot your password ?" />
+                  <TextArea fx:id="passwordarea" layoutX="23.0" layoutY="90.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="167.0" style="-fx-background-color: #f4f3f3;" />
+               </children></Pane>
+            <Label layoutX="85.0" layoutY="58.0" text="Welcome Back !">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="90.0" layoutY="111.0" text="Ready to continue? Let's go." />
+            <Label layoutX="90.0" layoutY="337.0" text="Focus on what matters most: learning." />
+         </children></Pane>
+      <Pane layoutX="16.0" layoutY="23.0" prefHeight="391.0" prefWidth="304.0">
+         <children>
+            <ImageView fitHeight="345.0" fitWidth="304.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/img/Students_learning.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

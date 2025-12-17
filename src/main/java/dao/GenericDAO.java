@@ -137,4 +137,21 @@ public class GenericDAO<T, ID> {
             em.close();
         }
     }
+
+    /**
+     * Execute JPQL and return results with an optional maximum number of results.
+     */
+    public List<T> findWithQuery(String jpql, Map<String, Object> params, int maxResults) {
+        EntityManager em = JPAUtil.getEntityManager();
+        try {
+            TypedQuery<T> q = em.createQuery(jpql, entityClass);
+            if (params != null) {
+                params.forEach(q::setParameter);
+            }
+            if (maxResults > 0) q.setMaxResults(maxResults);
+            return q.getResultList();
+        } finally {
+            em.close();
+        }
+    }
 }

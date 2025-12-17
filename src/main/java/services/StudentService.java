@@ -3,6 +3,7 @@ package services;
 import dao.GenericDAO;
 import models.Etudiant;
 import models.SchoolClass;
+import java.util.List;
 
 /**
  * Student-related operations: create, update, assign to class, status management.
@@ -37,5 +38,9 @@ public class StudentService extends BaseService<Etudiant, Integer> {
     public Etudiant changeStatus(Etudiant student, String status) {
         student.setStatus(status);
         return update(student);
+    }
+
+    public List<Etudiant> getAllStudents() {
+        return findAll();
     }
 }

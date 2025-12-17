@@ -49,5 +49,14 @@ public class CourseService extends BaseService<Course, Integer> {
         String jpql = "SELECT o FROM CourseOffering o WHERE o.course.id = :cid";
         return offeringDao.findWithQuery(jpql, java.util.Map.of("cid", courseId));
     }
+
+    /**
+     * List latest course offerings across all courses, ordered by id desc (most recent first).
+     * @param max maximum number of offerings to return
+     */
+    public java.util.List<CourseOffering> listLatestOfferings(int max) {
+        String jpql = "SELECT o FROM CourseOffering o ORDER BY o.id DESC";
+        return offeringDao.findWithQuery(jpql, null, max);
+    }
 }
 

@@ -7,6 +7,7 @@ import lombok.Setter;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Table(name = "academic_years")
 @Getter
 @Setter
 @NoArgsConstructor

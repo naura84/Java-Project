@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="519.0" prefWidth="773.0" style="-fx-background-color: #f6f4f4;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER_NAME">
+    <children>
+        <Pane fx:id="sidebar" layoutX="-33.0" prefHeight="538.0" prefWidth="177.0" style="-fx-background-color: white;">
+            <children>
+                <Button fx:id="cohort" layoutX="87.0" layoutY="138.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Cohort">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                    <padding>
+                        <Insets right="4.0" />
+                    </padding></Button>
+                <Button fx:id="mark" layoutX="76.0" layoutY="169.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="59.0" style="-fx-background-color: white;" text="Mark">
+                    <font>
+                        <Font size="16.0" />
+                    </font></Button>
+                <Button fx:id="pedagogy" layoutX="71.0" layoutY="204.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Pedagogy">
+                    <font>
+                        <Font size="16.0" />
+                    </font></Button>
+                <Button fx:id="notification" layoutX="74.0" layoutY="239.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="65.0" style="-fx-background-color: white;" text="Notifs">
+                    <font>
+                        <Font size="16.0" />
+                    </font></Button>
+                <Button fx:id="log_out" layoutX="78.0" layoutY="472.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Log out">
+                    <font>
+                        <Font size="16.0" />
+                    </font></Button>
+                <Label layoutX="51.0" layoutY="60.0" text="Menu">
+                    <font>
+                        <Font size="13.0" />
+                    </font>
+                </Label>
+                <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="59.0" layoutY="141.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@/img/team-line.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="59.0" layoutY="212.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@/img/book-ai-line.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="58.0" layoutY="247.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@/img/red-packet-line.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="59.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@/img/ball-pen-line.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="62.0" layoutY="445.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@/img/tools-fill.png" />
+                    </image>
+                </ImageView>
+                <Button fx:id="setting" layoutX="84.0" layoutY="437.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="77.0" style="-fx-background-color: white;" text="Setting">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                    <padding>
+                        <Insets right="20.0" />
+                    </padding>
+                </Button>
+                <Button fx:id="profil" layoutX="72.0" layoutY="97.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Dashboard">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                    <padding>
+                        <Insets left="5.0" />
+                    </padding>
+                </Button>
+                <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="62.0" layoutY="480.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@/img/logout-box-line.png" />
+                    </image>
+                </ImageView>
+                <Label layoutX="48.0" layoutY="378.0" text="Others">
+                    <font>
+                        <Font size="13.0" />
+                    </font>
+                </Label>
+                <Button fx:id="message" layoutX="75.0" layoutY="274.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Message">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Button>
+                <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="59.0" layoutY="282.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@/img/message-3-line.png" />
+                    </image>
+                </ImageView>
+                <Button fx:id="calendar" layoutX="75.0" layoutY="309.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Calendar">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Button>
+                <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="59.0" layoutY="317.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@/img/calendar-line.png" />
+                    </image>
+                </ImageView>
+                <Label layoutX="52.0" layoutY="14.0" text="Dash." textFill="#0b1957">
+                    <font>
+                        <Font name="Elephant" size="30.0" />
+                    </font>
+                </Label>
+                <Button fx:id="dashboardEleve" layoutX="43.0" layoutY="402.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="101.0" style="-fx-background-color: #0b1957; -fx-background-radius: 10px; -fx-border-radius: 10px;" text="Profil" textAlignment="CENTER" textFill="#fcf9f9">
+                    <padding>
+                        <Insets left="25.0" />
+                    </padding>
+            </Button>
+            <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="59.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/img/home-8-line%20(2).png" />
+               </image>
+            </ImageView>
+            </children></Pane>
+        <Label layoutX="660.0" layoutY="14.0" text="Linda Adora" AnchorPane.rightAnchor="51.0" AnchorPane.topAnchor="18.0">
+            <font>
+                <Font name="Cambria Italic" size="14.0" />
+            </font>
+        </Label>
+        <Label layoutX="681.0" layoutY="28.0" text="Student" AnchorPane.bottomAnchor="488.0" AnchorPane.rightAnchor="51.0" AnchorPane.topAnchor="35.0">
+            <font>
+                <Font size="10.0" />
+            </font>
+        </Label>
+        <ImageView fitHeight="35.0" fitWidth="30.0" layoutX="722.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="18.0">
+            <image>
+                <Image url="@/img/account-circle-line.png" />
+            </image>
+        </ImageView>
+        <Pane fx:id="next_courses" layoutX="172.0" layoutY="324.0" prefHeight="200.0" prefWidth="368.0">
+            <children>
+                <Pane layoutY="105.0" prefHeight="95.0" prefWidth="368.0" style="-fx-background-color: white; -fx-background-radius: 15px; -fx-border-radius: 15px;">
+                    <children>
+                        <Label layoutX="275.0" layoutY="-6.0" prefHeight="54.0" prefWidth="73.0" text="Présentiel" wrapText="true">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <padding>
+                                <Insets top="-10.0" />
+                            </padding>
+                        </Label>
+                    </children>
+                </Pane>
+                <Pane prefHeight="95.0" prefWidth="368.0" style="-fx-background-color: white; -fx-background-radius: 15px; -fx-border-radius: 15px;">
+                    <children>
+                        <Label layoutX="275.0" layoutY="-6.0" prefHeight="54.0" prefWidth="73.0" text="Présentiel" wrapText="true">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <padding>
+                                <Insets top="-10.0" />
+                            </padding>
+                        </Label>
+                    </children>
+                </Pane>
+            </children>
+        </Pane>
+    </children>
+</AnchorPane>

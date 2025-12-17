@@ -9,6 +9,7 @@ import lombok.Setter;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Table(name = "library_loans")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -28,6 +29,4 @@ public class LibraryLoan {
     private BigDecimal fineAmount;
     private String status;
 
-    @OneToMany(mappedBy = "book")
-    private java.util.List<LibraryLoan> loans;
 }

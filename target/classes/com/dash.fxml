@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="519.0" prefWidth="773.0" style="-fx-background-color: #f6f4f4;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.DashboardController">
+<AnchorPane prefHeight="519.0" prefWidth="773.0" style="-fx-background-color: #f6f4f4;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DashController">
    <children>
       <TextField fx:id="search" layoutX="171.0" layoutY="14.0" prefHeight="27.0" prefWidth="166.0" promptText="Search..." style="-fx-background-radius: 50px; -fx-border-radius: 50px; -fx-border-color: #ccc8c8;">
          <opaqueInsets>
@@ -26,7 +26,7 @@
                      </font>
                   </Label>
                </children></Pane>
-            <Label fx:id="totalStudentLabel" layoutX="8.0" layoutY="37.0" prefHeight="35.0" prefWidth="100.0" text="124,684" textFill="WHITE">
+            <Label fx:id="totalStudentsLabel" layoutX="8.0" layoutY="37.0" prefHeight="35.0" prefWidth="100.0" text="0" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
@@ -187,7 +187,7 @@
                   </Label>
                </children>
             </Pane>
-            <Label fx:id="totalTeacherLabel" layoutX="8.0" layoutY="37.0" prefHeight="35.0" prefWidth="100.0" text="12,379" textFill="#0b1957">
+            <Label fx:id="totalTeachersLabel" layoutX="8.0" layoutY="37.0" prefHeight="35.0" prefWidth="100.0" text="0" textFill="#0b1957">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
@@ -210,7 +210,7 @@
                   </Label>
                </children>
             </Pane>
-            <Label fx:id="totalStaffLabel" layoutX="8.0" layoutY="37.0" prefHeight="35.0" prefWidth="100.0" text="29,300" textFill="WHITE">
+            <Label fx:id="totalStaffLabel" layoutX="8.0" layoutY="37.0" prefHeight="35.0" prefWidth="100.0" text="0" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
@@ -222,12 +222,12 @@
             </Label>
          </children>
       </Pane>
-      <Label layoutX="660.0" layoutY="14.0" text="Linda Adora" AnchorPane.rightAnchor="51.0" AnchorPane.topAnchor="18.0">
+      <Label fx:id="displayNameLabel" layoutX="660.0" layoutY="14.0" text="User" AnchorPane.rightAnchor="51.0" AnchorPane.topAnchor="18.0">
          <font>
             <Font name="Cambria Italic" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="681.0" layoutY="28.0" text="Admin" AnchorPane.bottomAnchor="488.0" AnchorPane.rightAnchor="51.0" AnchorPane.topAnchor="35.0">
+      <Label fx:id="roleLabel" layoutX="681.0" layoutY="28.0" text="Role" AnchorPane.bottomAnchor="488.0" AnchorPane.rightAnchor="51.0" AnchorPane.topAnchor="35.0">
          <font>
             <Font size="10.0" />
          </font>
@@ -262,7 +262,7 @@
                   <Image url="@/img/work.jpg" />
                </image>
             </ImageView>
-            <Label layoutX="24.0" layoutY="22.0" text="Hi, Linda " textFill="#0b1957">
+            <Label fx:id="welcomeLabel" layoutX="24.0" layoutY="22.0" text="Hi, User" textFill="#0b1957">
                <font>
                   <Font name="Elephant" size="36.0" />
                </font>

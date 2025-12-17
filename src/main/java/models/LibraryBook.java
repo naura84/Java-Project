@@ -7,6 +7,7 @@ import lombok.Setter;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Table(name = "library_books")
 @Getter
 @Setter
 @NoArgsConstructor

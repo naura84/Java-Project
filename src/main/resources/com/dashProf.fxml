@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="519.0" prefWidth="773.0" style="-fx-background-color: #f6f4f4;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DashController">
+    <children>
+        <TextField fx:id="search" layoutX="171.0" layoutY="14.0" prefHeight="27.0" prefWidth="166.0" promptText="Search..." style="-fx-background-radius: 50px; -fx-border-radius: 50px; -fx-border-color: #ccc8c8;">
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+            <padding>
+                <Insets left="25.0" />
+            </padding></TextField>
+        <Pane fx:id="total_courses" layoutX="159.0" layoutY="68.0" prefHeight="95.0" prefWidth="135.0" style="-fx-background-color: #0b1957; -fx-background-radius: 10px;">
+            <children>
+                <Label layoutX="92.0" layoutY="30.0" prefHeight="35.0" prefWidth="29.0" text="31" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="24.0" />
+                    </font>
+                </Label>
+                <Label layoutX="14.0" layoutY="4.0" text="My courses" textFill="WHITE">
+                    <padding>
+                        <Insets top="3.0" />
+                    </padding>
+               <font>
+                  <Font size="14.0" />
+               </font>
+                </Label>
+            <ImageView fitHeight="35.0" fitWidth="65.0" layoutX="16.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/img/book-line.png" />
+               </image>
+            </ImageView>
+            </children>
+        </Pane>
+        <Pane fx:id="sidebar" layoutX="-33.0" prefHeight="538.0" prefWidth="177.0" style="-fx-background-color: white;">
+            <children>
+                <Button fx:id="dashboard" layoutX="42.0" layoutY="90.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="121.0" style="-fx-background-color: #0b1957; -fx-background-radius: 10px; -fx-border-radius: 10px;" text="Dashboard" textAlignment="CENTER" textFill="#fcf9f9">
+               <padding>
+                  <Insets left="25.0" />
+               </padding></Button>
+                <Button fx:id="Classes" layoutX="87.0" layoutY="138.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Classes">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                    <padding>
+                        <Insets right="4.0" />
+                    </padding></Button>
+                <Button fx:id="marks" layoutX="81.0" layoutY="169.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Marks">
+                    <font>
+                        <Font size="16.0" />
+                    </font></Button>
+                <Button fx:id="courses" layoutX="71.0" layoutY="204.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Courses">
+                    <font>
+                        <Font size="16.0" />
+                    </font></Button>
+                <Button fx:id="project" layoutX="78.0" layoutY="239.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Projects">
+                    <font>
+                        <Font size="16.0" />
+                    </font></Button>
+                <Button fx:id="log_out" layoutX="78.0" layoutY="472.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Log out">
+                    <font>
+                        <Font size="16.0" />
+                    </font></Button>
+                <Label layoutX="51.0" layoutY="60.0" text="Menu">
+                    <font>
+                        <Font size="13.0" />
+                    </font>
+                </Label>
+                <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="59.0" layoutY="141.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@/img/team-line.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="59.0" layoutY="212.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@/img/book-ai-line.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="59.0" layoutY="247.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@/img/line-chart-line.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="59.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@/img/ball-pen-line.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="62.0" layoutY="445.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@/img/tools-fill.png" />
+                    </image>
+                </ImageView>
+                <Button fx:id="setting" layoutX="84.0" layoutY="437.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="77.0" style="-fx-background-color: white;" text="Setting">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                    <padding>
+                        <Insets right="20.0" />
+                    </padding>
+                </Button>
+                <Button fx:id="profil" layoutX="87.0" layoutY="407.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Profil">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                    <padding>
+                        <Insets left="5.0" />
+                    </padding>
+                </Button>
+                <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="62.0" layoutY="410.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@/img/account-circle-line.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="62.0" layoutY="480.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@/img/logout-box-line.png" />
+                    </image>
+                </ImageView>
+                <Label layoutX="48.0" layoutY="378.0" text="Others">
+                    <font>
+                        <Font size="13.0" />
+                    </font>
+                </Label>
+                <Button fx:id="messages" layoutX="75.0" layoutY="274.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Message">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Button>
+                <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="59.0" layoutY="282.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@/img/message-3-line.png" />
+                    </image>
+                </ImageView>
+                <Button fx:id="Calendar" layoutX="75.0" layoutY="309.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Calendar">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Button>
+                <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="59.0" layoutY="317.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@/img/calendar-line.png" />
+                    </image>
+                </ImageView>
+                <Label layoutX="52.0" layoutY="14.0" text="Dash." textFill="#0b1957">
+                    <font>
+                        <Font name="Elephant" size="30.0" />
+                    </font>
+                </Label>
+            <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="53.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/img/home-8-line.png" />
+               </image>
+            </ImageView>
+            </children></Pane>
+        <Pane fx:id="calendar_pane" layoutX="159.0" layoutY="175.0" prefHeight="202.0" prefWidth="248.0" style="-fx-background-color: white; -fx-background-radius: 15px; -fx-border-radius: 15px;">
+            <children>
+                <PieChart layoutX="-4.0" prefHeight="178.0" prefWidth="191.0" />
+            <DatePicker layoutX="14.0" layoutY="10.0" prefHeight="25.0" prefWidth="218.0" promptText="Date" style="-fx-background-color: #0b1957;" />
+            <VBox layoutX="14.0" layoutY="42.0" prefHeight="154.0" prefWidth="224.0">
+               <children>
+                  <HBox prefHeight="29.0" prefWidth="232.0">
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="21.0" prefWidth="43.0" style="-fx-background-color: #0b1957;" text="Précédent" textFill="WHITE">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Button>
+                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="92.0" text="Décembre 2025">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="43.0" style="-fx-background-color: #0b1957;" text="Suivant" textFill="WHITE">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </HBox>
+                  <GridPane fx:id="calenderGrid" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="107.0" prefWidth="200.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                  </GridPane>
+               </children>
+            </VBox>
+            </children>
+        </Pane>
+        <Pane layoutX="424.0" layoutY="175.0" prefHeight="202.0" prefWidth="311.0" style="-fx-background-color: white; -fx-background-radius: 15px; -fx-border-radius: 15px;">
+         <children>
+            <Label layoutX="39.0" layoutY="16.0" text="Next Classes" textFill="#0b1957">
+               <padding>
+                  <Insets top="3.0" />
+               </padding>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="21.0" fitWidth="29.0" layoutX="14.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/img/history-line.png" />
+               </image>
+            </ImageView>
+            <Pane fx:id="detail_cours" layoutX="29.0" layoutY="54.0" prefHeight="61.0" prefWidth="254.0" style="-fx-background-radius: 15px; -fx-border-radius: 15px; -fx-background-color: #f6f4f4;">
+               <children>
+                  <Label layoutX="14.0" layoutY="4.0" text="B2 Group 4" textFill="#0b1957">
+                     <padding>
+                        <Insets top="3.0" />
+                     </padding>
+                  </Label>
+                  <ImageView fitHeight="21.0" fitWidth="29.0" layoutX="16.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@/img/map-2-line.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="44.0" layoutY="26.0" text="Eiffel 5, C0-12" textFill="#33ae1b">
+                     <padding>
+                        <Insets top="3.0" />
+                     </padding>
+                  </Label>
+                  <Label layoutX="163.0" layoutY="21.0" text="10h45 - 12h45" textFill="#b53409">
+                     <padding>
+                        <Insets top="3.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="29.0" layoutY="127.0" prefHeight="61.0" prefWidth="254.0" style="-fx-background-radius: 15px; -fx-border-radius: 15px; -fx-background-color: #f6f4f4;">
+               <children>
+                  <Label layoutX="14.0" layoutY="4.0" text="M1 Groupe Cybersecurity" textFill="#0b1957">
+                     <padding>
+                        <Insets top="3.0" />
+                     </padding>
+                  </Label>
+                  <ImageView fitHeight="21.0" fitWidth="29.0" layoutX="14.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@/img/map-2-line.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="45.0" layoutY="32.0" text="Eiffel 1, EM 212" textFill="#33ae1b">
+                     <padding>
+                        <Insets top="3.0" />
+                     </padding>
+                  </Label>
+                  <Label layoutX="189.0" layoutY="22.0" text="13h - 15h" textFill="#b53409">
+                     <padding>
+                        <Insets top="3.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </Pane>
+         </children></Pane>
+        <Pane fx:id="total_classes" layoutX="311.0" layoutY="68.0" prefHeight="95.0" prefWidth="135.0" style="-fx-background-color: white; -fx-background-radius: 10px;">
+            <children>
+                <Label layoutX="88.0" layoutY="30.0" prefHeight="35.0" prefWidth="33.0" text="12" textFill="#0b1957">
+                    <font>
+                        <Font name="System Bold" size="24.0" />
+                    </font>
+                </Label>
+                <Label layoutX="8.0" layoutY="4.0" text="Classes" textFill="#0b1957">
+                    <padding>
+                        <Insets top="3.0" />
+                    </padding>
+               <font>
+                  <Font size="14.0" />
+               </font>
+                </Label>
+            <ImageView fitHeight="35.0" fitWidth="38.0" layoutX="20.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/img/team-line.png" />
+               </image>
+            </ImageView>
+            </children>
+        </Pane>
+        <Pane layoutX="461.0" layoutY="68.0" prefHeight="95.0" prefWidth="271.0" style="-fx-background-color: #0b1957; -fx-background-radius: 10px;" AnchorPane.leftAnchor="461.0">
+            <children>
+                <Label layoutX="14.0" layoutY="4.0" text="Unread Messages" textFill="WHITE">
+                    <padding>
+                        <Insets top="3.0" />
+                    </padding>
+               <font>
+                  <Font size="14.0" />
+               </font>
+                </Label>
+            <Button fx:id="view_messages" layoutX="184.0" layoutY="12.0" mnemonicParsing="false" style="-fx-background-color: white;" text="View posts" textFill="#0b1957" />
+            <Label layoutX="14.0" layoutY="27.0" prefHeight="61.0" prefWidth="150.0" text="Avis de réunion, messages non lus &amp; absence inattendue d'un élève clé à venir" textFill="WHITE" wrapText="true">
+               <padding>
+                  <Insets top="3.0" />
+               </padding>
+            </Label>
+            </children>
+        </Pane>
+        <Label layoutX="660.0" layoutY="14.0" text="Linda Adora" AnchorPane.rightAnchor="51.0" AnchorPane.topAnchor="18.0">
+            <font>
+                <Font name="Cambria Italic" size="14.0" />
+            </font>
+        </Label>
+        <Label layoutX="681.0" layoutY="28.0" text="Professor" AnchorPane.bottomAnchor="488.0" AnchorPane.rightAnchor="51.0" AnchorPane.topAnchor="35.0">
+            <font>
+                <Font size="10.0" />
+            </font>
+        </Label>
+        <Pane layoutX="159.0" layoutY="393.0" prefHeight="131.0" prefWidth="583.0" style="-fx-background-color: white; -fx-background-radius: 15px; -fx-border-radius: 15px;">
+            <children>
+                <Label layoutX="371.0" layoutY="14.0" text="Hi, Linda " textFill="#0b1957">
+                    <font>
+                        <Font name="Elephant" size="36.0" />
+                    </font>
+                </Label>
+                <Label alignment="CENTER_RIGHT" layoutX="277.0" layoutY="66.0" prefHeight="25.0" prefWidth="279.0" text="Your work awaits. Let's get started!" textAlignment="RIGHT">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+            <ImageView fitHeight="131.0" fitWidth="138.0" layoutX="54.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/img/profimage.jpg" />
+               </image>
+            </ImageView>
+            </children>
+        </Pane>
+        <ImageView fitHeight="35.0" fitWidth="30.0" layoutX="722.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="18.0">
+            <image>
+                <Image url="@/img/account-circle-line.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="15.0" fitWidth="14.0" layoutX="179.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@/img/search-2-line.png" />
+            </image>
+        </ImageView>
+    </children>
+</AnchorPane>

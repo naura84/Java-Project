@@ -7,6 +7,7 @@ import lombok.Setter;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Table(name = "fee_items")
 @Getter
 @Setter
 @NoArgsConstructor

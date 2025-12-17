@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="439.0" prefWidth="680.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.LoginController">
+<AnchorPane prefHeight="439.0" prefWidth="680.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
    <children>
       <Pane layoutX="263.0" prefHeight="439.0" prefWidth="420.0" style="-fx-background-color: white;">
          <children>
@@ -22,7 +22,7 @@
                      </font>
                   </Label>
                   <TextArea fx:id="emailarea" layoutX="23.0" layoutY="34.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="167.0" style="-fx-background-color: #f4f3f3;" />
-                  <Button fx:id="signin" onAction="#onSignIn" layoutX="23.0" layoutY="155.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="167.0" style="-fx-background-color: #094a9e;" text="Sign In" textFill="WHITE" />
+                  <Button fx:id="signin" layoutX="23.0" layoutY="155.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="167.0" style="-fx-background-color: #094a9e;" text="Sign In" textFill="WHITE" />
                   <Hyperlink layoutX="23.0" layoutY="124.0" text="Forgot your password ?" />
                   <TextArea fx:id="passwordarea" layoutX="23.0" layoutY="90.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="167.0" style="-fx-background-color: #f4f3f3;" />
                </children></Pane>

@@ -3,14 +3,9 @@ package models;
 import java.time.LocalDateTime;
 import java.math.BigDecimal;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.NoArgsConstructor;
 
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
+@Table(name = "enrollments")
 public class Enrollment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,4 +20,62 @@ public class Enrollment {
     private String status;
     private BigDecimal finalGrade;
     private BigDecimal gradePoint;
+
+    public Enrollment() {}
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Etudiant getStudent() {
+        return student;
+    }
+
+    public void setStudent(Etudiant student) {
+        this.student = student;
+    }
+
+    public CourseOffering getCourseOffering() {
+        return courseOffering;
+    }
+
+    public void setCourseOffering(CourseOffering courseOffering) {
+        this.courseOffering = courseOffering;
+    }
+
+    public LocalDateTime getEnrolledOn() {
+        return enrolledOn;
+    }
+
+    public void setEnrolledOn(LocalDateTime enrolledOn) {
+        this.enrolledOn = enrolledOn;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public BigDecimal getFinalGrade() {
+        return finalGrade;
+    }
+
+    public void setFinalGrade(BigDecimal finalGrade) {
+        this.finalGrade = finalGrade;
+    }
+
+    public BigDecimal getGradePoint() {
+        return gradePoint;
+    }
+
+    public void setGradePoint(BigDecimal gradePoint) {
+        this.gradePoint = gradePoint;
+    }
 }

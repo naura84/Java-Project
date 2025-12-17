@@ -7,6 +7,7 @@ import lombok.Setter;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Table(name = "audit_logs")
 @Getter
 @Setter
 @NoArgsConstructor

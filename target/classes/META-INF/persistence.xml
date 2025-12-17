@@ -26,20 +26,17 @@
       <!-- JDBC driver (leave as is for MySQL) -->
       <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
 
-      <!-- The actual connection credentials are loaded from system properties. -->
-      <!-- Use the provided `config.EnvLoader.load()` (call it before creating EntityManagerFactory)
-           or pass JVM properties with -Djakarta.persistence.jdbc.url=... etc.
-           This avoids hardcoding credentials in the XML. -->
-      <property name="jakarta.persistence.jdbc.url" value="${jakarta.persistence.jdbc.url}"/>
-      <property name="jakarta.persistence.jdbc.user" value="${jakarta.persistence.jdbc.user}"/>
-      <property name="jakarta.persistence.jdbc.password" value="${jakarta.persistence.jdbc.password}"/>
+      <!-- Database connection credentials (from .env file) -->
+      <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/gestion_scolaire?serverTimezone=UTC&amp;useSSL=false"/>
+      <property name="jakarta.persistence.jdbc.user" value="naura"/>
+      <property name="jakarta.persistence.jdbc.password" value=")S]_7PCpUgkY)!36"/>
 
-      <!-- Hibernate settings (can also be set via .env/system props). Defaults provided after ':' -->
-      <property name="hibernate.dialect" value="${hibernate.dialect:org.hibernate.dialect.MySQL8Dialect}"/>
-      <property name="hibernate.hbm2ddl.auto" value="${hibernate.hbm2ddl.auto:validate}"/>
+      <!-- Hibernate settings -->
+      <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
+      <property name="hibernate.hbm2ddl.auto" value="update"/>
 
-      <property name="hibernate.show_sql" value="${hibernate.show_sql:false}"/>
-      <property name="hibernate.format_sql" value="${hibernate.format_sql:true}"/>
+      <property name="hibernate.show_sql" value="false"/>
+      <property name="hibernate.format_sql" value="true"/>
     </properties>
   </persistence-unit>
 </persistence>

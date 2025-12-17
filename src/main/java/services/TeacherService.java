@@ -34,7 +34,7 @@ public class TeacherService extends BaseService<Enseignant, Integer> {
     }
 
     public List<CourseOffering> getTeachingSchedule(Integer teacherId) {
-        String jpql = "SELECT o FROM CourseOffering o WHERE o.enseignant.id = :tid";
+        String jpql = "SELECT o FROM CourseOffering o WHERE o.instructor.id = :tid ORDER BY o.id DESC";
         return offeringDao.findWithQuery(jpql, java.util.Map.of("tid", teacherId));
     }
 }

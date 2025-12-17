@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Table(name = "nationalities")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -13,6 +14,5 @@ public class Nationality {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String code;
     private String name;
 }
