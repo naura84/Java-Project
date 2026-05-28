@@ -1,235 +1,250 @@
-# Gestion Scolaire — Application JavaFX
+# 🎓 School Management System — JavaFX Application
 
-Application de gestion scolaire complète développée en Java avec JavaFX et Hibernate/JPA. Ce projet offre un système complet d'authentification, de gestion académique, de notes, de finances, de bibliothèque, de santé, de transport, de discipline et bien d'autres fonctionnalités pour les établissements scolaires.
+> Complete academic management application with multi-role authentication, 
+> 50+ JPA entities, and a clean multi-layer architecture (MVC + DAO + Services).
 
-L'application utilise une architecture multi-couches :
-- **Interface graphique** : JavaFX (FXML)
-- **Base de données** : MySQL/MariaDB (UTF8MB4)
+![Java](https://img.shields.io/badge/Java-17-007396?logo=openjdk)
+![JavaFX](https://img.shields.io/badge/JavaFX-17.0.2-1E90FF)
+![Hibernate](https://img.shields.io/badge/Hibernate-6.x-59666C?logo=hibernate)
+![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?logo=mysql)
+![Maven](https://img.shields.io/badge/Maven-3.6+-C71A36?logo=apachemaven)
+
+Complete school management application developed in Java with JavaFX and Hibernate/JPA. This project offers a comprehensive authentication system, academic management, grades, finances, library, health, transport, discipline and many other features for educational institutions.
+
+
+## ✨ Key Features
+
+- 🔐 Multi-role authentication (Admin, Teacher, Student, Staff) with bcrypt/argon2
+- 🎓 Full academic management: faculties, programs, classes, courses, enrollments
+- 📊 Grades, evaluations & transcripts
+- 💰 Financial management: fees, invoices, payments, scholarships
+- 📚 Library, transport, health & disciplinary modules
+- 🗄️ 50+ JPA entities with optimized relationships
+
+---
+
+## 1. Architecture & Project Structure
+
+The application uses a multi-layer architecture:
+- **GUI** : JavaFX (FXML)
+- **Database** : MySQL/MariaDB (UTF8MB4)
 - **ORM** : Hibernate JPA
-- **Build** : Maven Java 17
+- **Build Tool** : Maven Java 17
 
-
-Architecture du projet
--------------------------------------
-
-## Structure des dossiers
+### 1.1 Folder Structure
 
 ```
 src/main/
 ├── java/com/
-│   ├── App.java                          # Point d'entrée JavaFX principal
+│   ├── App.java                          # Main JavaFX entry point
 │   ├── config/
-│   │   ├── DbInitializer.java           # Initialisation de la base de données
-│   │   ├── EnvLoader.java               # Chargement des variables d'environnement
-│   │   └── JPAUtil.java                 # Utilitaire de configuration JPA
+│   │   ├── DbInitializer.java           # Database initialization
+│   │   ├── EnvLoader.java               # Environment variables loader
+│   │   └── JPAUtil.java                 # JPA configuration utility
 │   ├── controllers/
-│   │   ├── DashController.java          # Tableau de bord administrateur
-│   │   └── LoginController.java         # Écran de connexion
+│   │   ├── DashController.java          # Admin dashboard controller
+│   │   └── LoginController.java         # Login screen controller
 │   ├── dao/
-│   │   └── GenericDAO.java              # DAO générique pour toutes les entités
-│   ├── models/                          # Entités JPA (50+ classes)
-│   │   └── [User.java, Etudiant.java, Enseignant.java, ...]
+│   │   └── GenericDAO.java              # Generic DAO for all entities
+│   ├── models/                          # JPA entities (50+ classes)
+│   │   └── [User.java, Student.java, Teacher.java, ...]
 │   └── services/
-│       ├── AppSession.java              # Gestion de la session utilisateur
-│       ├── AuthService.java             # Service d'authentification
-│       ├── BaseService.java             # Service de base
+│       ├── AppSession.java              # User session management
+│       ├── AuthService.java             # Authentication service
+│       ├── BaseService.java             # Base service
 │       └── [CourseService, GradeService, ...]
 └── resources/
     ├── com/
-    │   ├── login.fxml                  # Écran de connexion
-    │   ├── dash.fxml                   # Tableau de bord principal
-    │   ├── dashEleve.fxml              # Tableau de bord étudiant
-    │   ├── dashProf.fxml               # Tableau de bord professeur
-    │   └── profil.fxml                 # Écran de profil
+    │   ├── login.fxml                  # Login screen
+    │   ├── dash.fxml                   # Main dashboard
+    │   ├── dashEleve.fxml              # Student dashboard
+    │   ├── dashProf.fxml               # Teacher dashboard
+    │   └── profil.fxml                 # Profile screen
     └── META-INF/
-        └── persistence.xml             # Configuration JPA
+        └── persistence.xml             # JPA configuration
 ```
 ## Entités du modèle de données
 
-Les entités principales de l'application :
+### 1.2 Data Model Entities
 
-**Authentification & Utilisateurs**
-- `roles` : Rôles applicatifs (ADMIN, ENSEIGNANT, ETUDIANT, STAFF)
-- `users` : Comptes d'authentification centralisés
-- `user_profiles` : Informations personnelles détaillées
-- `admins`, `enseignants`, `etudiants`, `staff_non_teaching` : Profils spécifiques par rôle
+**Authentication & Users**
+- `roles` : Application roles (ADMIN, TEACHER, STUDENT, STAFF)
+- `users` : Centralized authentication accounts
+- `user_profiles` : Detailed personal information
+- `admins`, `teachers`, `students`, `staff_non_teaching` : Role-specific profiles
 
-**Structures académiques**
-- `academic_years` : Années académiques
-- `terms` : Semestres/périodes
-- `faculties`, `departments` : Organisation institutionnelle
-- `programs` : Cursus/programmes d'études
-- `classes` : Groupes/cohortes d'étudiants
-- `courses`, `course_offerings` : Catalogue et offres de cours
-- `enrollments` : Inscriptions aux cours
+**Academic Structures**
+- `academic_years` : Academic years
+- `terms` : Semesters/periods
+- `faculties`, `departments` : Institutional organization
+- `programs` : Study programs/curricula
+- `classes` : Student groups/cohorts
+- `courses`, `course_offerings` : Course catalog and offerings
+- `enrollments` : Course registrations
 
-**Évaluation & Résultats**
-- `assessment_types`, `assessments` : Types et évaluations planifiées
-- `grades`, `grade_scales` : Notes et échelles de notation
-- `transcripts` : Bulletins officiels
+**Assessment & Results**
+- `assessment_types`, `assessments` : Assessment types and planned evaluations
+- `grades`, `grade_scales` : Grades and grading scales
+- `transcripts` : Official transcripts
 
-**Autres fonctionnalités**
-- `attendance` : Présence aux cours
-- `timetables` : Emplois du temps
-- `fees`, `invoices`, `payments`, `scholarships` : Gestion financière
-- `library_books`, `library_loans` : Bibliothèque
-- `transport_buses`, `transport_routes` : Transport
-- `health_records`, `medical_visits` : Santé
+**Additional Features**
+- `attendance` : Course attendance
+- `timetables` : Schedules
+- `fees`, `invoices`, `payments`, `scholarships` : Financial management
+- `library_books`, `library_loans` : Library
+- `transport_buses`, `transport_routes` : Transportation
+- `health_records`, `medical_visits` : Health
 - `disciplinary_actions` : Discipline
 - `events`, `notifications`, `messages` : Communication
-- `files` : Gestion des fichiers
-- `audit_logs` : Journalisation des actions
-- `system_settings` : Configuration du système
+- `files` : File management
+- `audit_logs` : Action logging
+- `system_settings` : System configuration
 
-Technologies & Dépendances
--------------------------------------
+## 2. Technologies & Dependencies
 
-### Framework & Langues
-- **Java 17** : Langage de programmation
-- **Maven** : Gestion de projet et build
-- **JavaFX 17.0.2** : Interface utilisateur graphique (GUI)
+### 2.1 Framework & Languages
+- **Java 17** : Programming language
+- **Maven** : Project management and build tool
+- **JavaFX 17.0.2** : GUI framework
 
-### Persistance & ORM
-- **Hibernate ORM 6.x** : Implémentation JPA
-- **Jakarta Persistence 3.1.0** : Spécification JPA
-- **MySQL Connector/J** : Driver MySQL
+### 2.2 Persistence & ORM
+- **Hibernate ORM 6.x** : JPA implementation
+- **Jakarta Persistence 3.1.0** : JPA specification
+- **MySQL Connector/J** : MySQL driver
 
-### Utilitaires
-- **Lombok 1.18.28** : Génération automatique de getters/setters
-- **.env support** : Gestion des variables d'environnement
+### 2.3 Utilities
+- **Lombok 1.18.28** : Auto-generation of getters/setters
+- **.env support** : Environment variables management
 
-### Base de données
-- **MySQL/MariaDB** avec charset UTF8MB4
-- Configuration via variables d'environnement
-Bonnes pratiques & Configuration
-----------------------------
+### 2.4 Database
+- **MySQL/MariaDB** with UTF8MB4 charset
+- Configuration via environment variables
 
-### Sécurité
-- Les mots de passe sont hashés avec bcrypt/argon2 (voir `PasswordUtils.java`)
-- Les transactions sont utilisées pour les opérations multi-tables
-- L'authentification est centralisée dans `AuthService.java`
+## 3. Best Practices & Configuration
 
-### Performance & Optimisation
-- Indexer les colonnes fréquemment recherchées (email, role_id, student_number, course codes)
-- Utiliser le `GenericDAO` pour éviter la duplication de code
-- Les sessions utilisateur sont gérées via `AppSession.java`
+### 3.1 Security
+- Passwords are hashed with bcrypt/argon2 (see `PasswordUtils.java`)
+- Transactions are used for multi-table operations
+- Authentication is centralized in `AuthService.java`
 
-### Déploiement & Sauvegarde
-- Préparer un fichier `.env` à la racine du projet avec :
+### 3.2 Performance & Optimization
+- Index frequently searched columns (email, role_id, student_number, course codes)
+- Use `GenericDAO` to avoid code duplication
+- User sessions are managed via `AppSession.java`
+
+### 3.3 Deployment & Backup
+- Prepare a `.env` file at the project root with:
   ```
-  DB_URL=jdbc:mysql://localhost:3306/gestion_scolaire?serverTimezone=UTC&useSSL=false
+  DB_URL=jdbc:mysql://localhost:3306/school_management?serverTimezone=UTC&useSSL=false
   DB_USER=root
   DB_PASSWORD=yourpassword
   ```
-- Sauvegardes régulières de la base de données
-- Valider les contraintes étrangères après import des données
+- Regular database backups
+- Validate foreign key constraints after data import
 
-Installation & Démarrage
------------
+## 4. Installation & Getting Started
 
-### Prérequis
-- Java 17 ou plus récent
+### 4.1 Prerequisites
+- Java 17 or newer
 - Maven 3.6+
-- MySQL/MariaDB en fonctionnement
+- MySQL/MariaDB running
 
-### Configuration
+### 4.2 Configuration
 
-1. **Cloner le projet** :
+1. **Clone the repository** :
    ```bash
-   git clone <repository-url>
+   git clone "https://github.com/naura84/Java-Project.git"
    cd Java-Project
    ```
 
-2. **Créer un fichier `.env`** à la racine :
+2. **Create a `.env` file** at the project root:
    ```
-   DB_URL=jdbc:mysql://localhost:3306/gestion_scolaire?serverTimezone=UTC&useSSL=false
+   DB_URL=jdbc:mysql://localhost:3306/school_management?serverTimezone=UTC&useSSL=false
    DB_USER=root
    DB_PASSWORD=yourpassword
    ```
 
-3. **Initialiser la base de données** :
-   - Exécutez `data/database.sql` pour créer le schéma
-   - Exécutez `data/sample_data.sql` pour charger les données d'exemple
+3. **Initialize the database** :
+   - Execute `data/database.sql` to create the schema
+   - Execute `data/sample_data.sql` to load sample data
 
-### Build & Exécution
+### 4.3 Build & Execution
 
-**Compiler le projet** :
+**Compile the project** :
 ```powershell
 mvn -DskipTests clean package
 ```
 
-**Exécuter l'application** :
-- Sur Windows : Double-cliquez sur `run-app.bat`
-- Ou via Maven : `mvn javafx:run`
-- Ou manuellement :
+**Run the application** :
+- On Windows: Double-click `run-app.bat`
+- Or via Maven: `mvn javafx:run`
+- Or manually:
   ```powershell
   mvn compile
   mvn exec:java -Dexec.mainClass="com.App"
   ```
 
-### Fichiers compilés
-Les fichiers compilés et ressources se trouvent dans `target/classes`. Ne modifiez pas directement ce dossier.
+### 4.4 Compiled Files
+Compiled files and resources are located in `target/classes`. Do not modify this folder directly.
 
-Fonctionnalités principales
--------------------------------------
+## 5. Main Features & Functionalities
 
-### Authentification & Rôles
-- Système de connexion sécurisé avec hachage de mot de passe
-- Support de 4 rôles : ADMIN, ENSEIGNANT, ETUDIANT, STAFF
-- Gestion des sessions utilisateur
-- Profils d'utilisateurs détaillés
+### 5.1 Authentication & Roles
+- Secure login system with password hashing
+- Support for 4 roles: ADMIN, TEACHER, STUDENT, STAFF
+- User session management
+- Detailed user profiles
 
-### Gestion Académique
-- Gestion des années académiques et périodes
-- Organisation par facultés et départements
-- Gestion des programmes et cursus
-- Création et gestion des classes
-- Catalogue complet des cours
-- Inscriptions des étudiants
+### 5.2 Academic Management
+- Academic year and period management
+- Organization by faculties and departments
+- Program and curriculum management
+- Class creation and management
+- Complete course catalog
+- Student enrollments
 
-### Évaluation & Notes
-- Types d'évaluation multiples (contrôle continu, examen, projet, etc.)
-- Enregistrement des notes par évaluation
-- Calculs automatiques avec échelles de notation
-- Génération de bulletins et transcripts
+### 5.3 Grading & Evaluation
+- Multiple assessment types (continuous assessment, exams, projects, etc.)
+- Grade recording by evaluation
+- Automatic calculations with grading scales
+- Report card and transcript generation
 
-### Présence & Emploi du temps
-- Enregistrement de la présence par cours
-- Gestion des emplois du temps
+### 5.4 Attendance & Scheduling
+- Course attendance recording
+- Timetable management
 
-### Gestion Financière
-- Gestion des frais et libellés
-- Système de facturation
-- Enregistrement des paiements
-- Gestion des bourses et aides
+### 5.5 Financial Management
+- Fee and billing management
+- Invoicing system
+- Payment recording
+- Scholarship and financial aid management
 
-### Services Additionnels
-- Bibliothèque : Catalogue et gestion des prêts
-- Transport : Gestion des bus et itinéraires
-- Santé : Dossiers médicaux et visites
-- Discipline : Enregistrement des incidents
-- Événements : Communication avec les utilisateurs
-- Messagerie interne
-- Audit : Journalisation des actions critiques
+### 5.6 Additional Services
+- **Library**: Catalog and loan management
+- **Transport**: Bus and route management
+- **Health**: Medical records and visits
+- **Discipline**: Incident recording
+- **Events**: User communication
+- Internal messaging
+- **Audit**: Critical action logging
 
-Contribution & Développement
----------
+## 6. Contributing & Development
 
-### Convention de codage
-- Utiliser Java 17+ avec conventions de nommage camelCase
-- Ajouter des annotations Lombok (@Getter, @Setter, @Data) sur les entités
-- Documenter les services avec JavaDoc
+### 6.1 Coding Conventions
+- Use Java 17+ with camelCase naming conventions
+- Add Lombok annotations (@Getter, @Setter, @Data) to entities
+- Document services with JavaDoc
 
-### Ajouter une nouvelle fonctionnalité
-1. Créer l'entité JPA dans `models/`
-2. Implémenter un DAO spécialisé dans `dao/` ou utiliser `GenericDAO`
-3. Créer un service dans `services/`
-4. Créer le contrôleur JavaFX dans `controllers/`
-5. Ajouter le fichier FXML dans `resources/com/`
+### 6.2 Adding a New Feature
+1. Create the JPA entity in `models/`
+2. Implement a specialized DAO in `dao/` or use `GenericDAO`
+3. Create a service in `services/`
+4. Create the JavaFX controller in `controllers/`
+5. Add the FXML file in `resources/com/`
 
-### Support & Problèmes
-Pour des problèmes de base de données, vérifiez :
-- La configuration `.env`
-- La connexion MySQL
-- Les logs dans la console de l'application
-- Merci de ne pas committer vos identifiants dans `.env`. Le fichier `.env` est ignoré par Git.
+### 6.3 Support & Troubleshooting
+For database issues, check:
+- The `.env` configuration
+- MySQL connection
+- Logs in the application console
+- Please do not commit your credentials in `.env`. The `.env` file is ignored by Git.
